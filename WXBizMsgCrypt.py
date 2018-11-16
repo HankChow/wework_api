@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #-*- encoding:utf-8 -*-
 
 """ 对企业微信发送给企业后台的消息加解密示例代码.
