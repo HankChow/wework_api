@@ -23,4 +23,4 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=config.SERVERPORT if config.SERVERPORT else 80, debug=True)
+    app.run(host='0.0.0.0', port=config.SERVERPORT, debug=True)
