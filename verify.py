@@ -17,7 +17,7 @@ def main():
     timestamp = request.args.get('timestamp')
     nonce = request.args.get('nonce')
     echostr = request.args.get('echostr')
-    wxcpt = WXBizMsgCrypt.WXBizMsgCrypt(sToken,sEncodingAESKey,sCorpID)
+    wxcpt = WXBizMsgCrypt.WXBizMsgCrypt(sToken, sEncodingAESKey, sCorpID)
     ret, sEchoStr = wxcpt.VerifyURL(msg_signature, timestamp, nonce, echostr)
     return sEchoStr
 
