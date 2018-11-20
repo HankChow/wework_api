@@ -54,7 +54,7 @@ class SendMessage(object):
                         'content': 'msg({number}/{count})\n'.format(number=message_number, count=message_count) + cut
                     }
                 })
-                requests.post(url, data=msg_data)
+                requests.post(url, params=params, data=msg_data)
                 content = content[config.MESSAGELENGTH:]
                 message_number += 1
         else:
