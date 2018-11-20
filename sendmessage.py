@@ -23,8 +23,12 @@ class SendMessage(object):
         return token
 
     def get_new_token(self):
-        url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={secret}'.format(corpid=self.corpid, secret=self.corpsecret)
-        response = requests.get(url).text
+        url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken'
+        params = {
+            'corpid': self.corpid,
+            'corpsecret': self.corpsecret
+        }
+        response = requests.get(url, params=params).text
         j = json.loads(response)
         if not j['errcode']:
             new_token = j['access_token']
@@ -33,7 +37,10 @@ class SendMessage(object):
             return new_token
 
     def send_message(self, to, content):
-        url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={token}'.format(token=self.token)
+        url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send'
+        params = {
+            'access_token': self.token        
+        }
         if len(content) > config.MESSAGELENGTH:
             message_count = len(content) / config.MESSAGELENGTH + 1
             message_number = 1
@@ -59,7 +66,7 @@ class SendMessage(object):
                     'content': content
                 }
             })
-            requests.post(url, data=msg_data)
+            requests.post(url, params=params, data=msg_data)
 
 
 if __name__ == '__main__':
