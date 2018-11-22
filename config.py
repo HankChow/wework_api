@@ -29,6 +29,9 @@ SERVERPORT=None
 # 下发消息的最大字符数，当消息大于 2048 字符时会被企业微信截断为前 2048 字符，长消息将会以该参数值为长度被切分为多条消息，默认为2000
 MESSAGELENGTH=None
 
+# 是否使用 Redis 做 token 缓存，默认为False
+USEREDIS=None
+
 ########## 以上为可选参数，默认全为 None
 
 
@@ -40,3 +43,5 @@ if not SERVERPORT:
     SERVERPORT = 80
 if not MESSAGELENGTH or MESSAGELENGTH > 2000:
     MESSAGELENGTH = 2000
+if USEREDIS is None:
+    USEREDIS = False
