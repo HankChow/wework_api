@@ -24,6 +24,7 @@
   * requests 库：使用 requests 库构造和发送 HTTP 请求。
   * redis 库：下发消息需要持有有效 token，为提高效率以及避免频率限制，会使用 redis 将 token 缓存到本地直至其失效。
 * Redis
+  * 如果在配置文件中将 `USEREDIS` 项设置为 `False` 或 `None`，则使用文件对 token 进行缓存，无需依赖 Redis。
 
 
 
